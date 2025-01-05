@@ -7,15 +7,42 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
+html[data-mode="light"] {
+    --background: #1f1f1f;
     --foreground: #ededed;
-  }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors border-transparent bg-foreground text-background shadow;
+  }
+}
+
+.animation-shine {
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+  -webkit-mask-size: 200%;
+  animation: shine 8s infinite;
+}
+
+@-webkit-keyframes shine {
+  0% {
+    -webkit-mask-position: 150%;
+  }
+  
+  20%, 100% {
+    -webkit-mask-position: -50%;
+  }
+  
 }

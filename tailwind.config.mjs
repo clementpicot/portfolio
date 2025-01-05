@@ -11,7 +11,14 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        funnel: "var(--font-funnel)"
+      },
+      fontSize: {
+        clamp: 'clamp(2rem, 10vw, 8.5rem)'
+      }
     },
   },
   plugins: [],
+  darkMode: ["selector", "[data-mode='dark']"],
 };
