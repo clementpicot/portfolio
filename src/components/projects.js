@@ -38,7 +38,7 @@ export default function Projects({ projects, locale }) {
               </h3>
             </div>
             <div className="mt-2 space-y-4">
-              <div className="space-x-2">
+              <div className="space-x-2 space-y-2">
                 {item.fields.technos["fr"].map((techno, index) => (
                   <span key={index} className="badge">
                     {techno}

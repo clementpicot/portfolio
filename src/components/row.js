@@ -1,18 +1,17 @@
 "use client";
 
 import useTracking from "@/hooks/use-tracking";
+import { useCursor } from "@/providers/cursor-provider";
 import { ArrowDownRightIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
-export default function Row({
-  delay,
-  context,
-  isOpened,
-  onToggle,
-  children,
-}) {
-  const { setIsTracking, isTracking, springX, springY } = useTracking({ stiffness: 200, damping: 25 });
+export default function Row({ delay, context, isOpened, onToggle, children }) {
+  const { setIsTracking, isTracking, springX, springY } = useTracking({
+    stiffness: 200,
+    damping: 25,
+  });
+  const { setIsCursorVisible } = useCursor();
 
   return (
     <motion.article
@@ -25,32 +24,55 @@ export default function Row({
           delay,
         },
       }}
-      onMouseEnter={() => setIsTracking(true)}
-      onMouseLeave={() => setIsTracking(false)}
+      onMouseEnter={() => {
+        setIsCursorVisible(false);
+        setIsTracking(true);
+      }}
+      onMouseLeave={() => {
+        setIsCursorVisible(true);
+        setIsTracking(false);
+      }}
       onClick={onToggle}
       className="py-8 border-b border-neutral-400 cursor-none"
     >
       {isTracking && (
         <motion.div
-          className={`dark:bg-slate-50 bg-foreground dark:bg-foreground fixed rounded-full inset-0 -top-4 -left-4 ${
-            isTracking ? "size-12 opacity-100" : "size-6 opacity-50"
-          }`}
+          className="dark:bg-slate-50 bg-foreground dark:bg-foreground fixed pointer-events-none rounded-full inset-0 -top-4 -left-4"
           style={{
             translateX: springX,
             translateY: springY,
           }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
+          initial={{
+            width: 12,
+            height: 12,
+          }}
+          animate={{
+            width: 48,
+            height: 48,
+            transition: {
+              type: "spring",
+              stiffness: 300,
+              damping: 10,
+            },
           }}
         >
-          <ArrowDownRightIcon
-            width={24}
-            className={`-top-1/2 translate-y-1/2 -left-1/2 translate-x-1/2 text-slate-50 dark:text-black ${
-              isOpened && "-rotate-90"
-            } transition-all`}
-          />
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{
+              width: 24,
+              transition: {
+                type: "spring",
+                stiffness: 300,
+                damping: 10,
+              },
+            }}
+          >
+            <ArrowDownRightIcon
+              className={`-top-1/2 translate-y-1/2 -left-1/2 translate-x-1/2 text-slate-50 dark:text-black w-full ${
+                isOpened && "-rotate-90"
+              } transition-all`}
+            />
+          </motion.div>
         </motion.div>
       )}
       {children}

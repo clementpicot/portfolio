@@ -14,7 +14,7 @@ export default function LocaleSwitcher({locale}) {
   if (!mounted) return;
 
   return (
-    <button className="text-sm font-bold uppercase font-funnel" onClick={() => {
+    <button className="text-sm font-bold uppercase font-funnel p-1" onClick={() => {
       setCurrentLocale(currentLocale === "fr" ? "en" : "fr")
       redirect(`/${currentLocale === "fr" ? "en" : "fr"}`)
     }} >
