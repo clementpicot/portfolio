@@ -42,7 +42,7 @@ export default async function Home({ params }) {
 
       <Projects projects={projects} locale={locale} />
 
-      <section className="mt-24">
+      <section className="mt-24 mb-12">
         <h2 className="text-clamp w-full block uppercase font-funnel text-bold">
           {locale === "fr" ? "Savoir-faire" : "Skills"}
         </h2>
