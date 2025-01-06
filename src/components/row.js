@@ -1,35 +1,18 @@
 "use client";
 
+import useTracking from "@/hooks/use-tracking";
 import { ArrowDownRightIcon } from "@heroicons/react/24/outline";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
 
-export default function Experience({ delay, context, isOpened, onToggle, children }) {
-  const [isTracking, setIsTracking] = useState(false);
-
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-
-  const springX = useSpring(cursorX, { stiffness: 200, damping: 25 });
-  const springY = useSpring(cursorY, { stiffness: 200, damping: 25 });
-
-  const handleMouseMove = (event) => {
-    cursorX.set(event.clientX);
-    cursorY.set(event.clientY);
-  };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [isTracking]);
+export default function Row({
+  delay,
+  context,
+  isOpened,
+  onToggle,
+  children,
+}) {
+  const { setIsTracking, isTracking, springX, springY } = useTracking({ stiffness: 200, damping: 25 });
 
   return (
     <motion.article
@@ -49,7 +32,7 @@ export default function Experience({ delay, context, isOpened, onToggle, childre
     >
       {isTracking && (
         <motion.div
-          className={`bg-slate-50 dark:bg-foreground fixed rounded-full left-0 top-0 ${
+          className={`dark:bg-slate-50 bg-foreground dark:bg-foreground fixed rounded-full inset-0 -top-4 -left-4 ${
             isTracking ? "size-12 opacity-100" : "size-6 opacity-50"
           }`}
           style={{
@@ -64,7 +47,7 @@ export default function Experience({ delay, context, isOpened, onToggle, childre
         >
           <ArrowDownRightIcon
             width={24}
-            className={`-top-1/2 translate-y-1/2 -left-1/2 translate-x-1/2 dark:text-slate-50 text-black ${
+            className={`-top-1/2 translate-y-1/2 -left-1/2 translate-x-1/2 text-slate-50 dark:text-black ${
               isOpened && "-rotate-90"
             } transition-all`}
           />

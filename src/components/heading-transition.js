@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-function HeadingTransition({ title }) {
+function HeadingTransition({ title, ...delegated }) {
   return (
     <>
       <motion.h1
@@ -17,11 +17,12 @@ function HeadingTransition({ title }) {
           },
         }}
         className="mb-0"
+        {...delegated}
       >
         {title}
       </motion.h1>
       <span className="sr-only">
-        Clément Picot - Experienced Frontend Developer - React Junior
+        Clément Picot - Experienced Frontend Developer - ReactJS NextJS
       </span>
       <motion.span
         initial={{ y: -24 }}
