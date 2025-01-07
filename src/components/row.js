@@ -81,13 +81,13 @@ export default function Row({ delay, context, isOpened, onToggle, children }) {
         {isOpened && (
           <motion.div
             initial={{ opacity: 0, height: 0, marginTop: 0 }}
-            animate={{ opacity: 1, height: "auto", marginTop: "1rem" }}
+            animate={{ opacity: 1, height: "auto", marginTop: "2rem" }}
             exit={{ opacity: 0, height: 0, marginTop: 0 }}
             transition={{
               duration: 0.25,
               ease: "easeInOut",
             }}
-            className="overflow-hidden"
+            className="row-content overflow-hidden"
           >
             {context}
           </motion.div>

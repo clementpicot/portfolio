@@ -1,4 +1,4 @@
-import "@/app/globals.css";
+import "@/app/globals.scss";
 
 import { AnimatePresence } from "framer-motion";
 import { routing } from "@/i18n/routing";

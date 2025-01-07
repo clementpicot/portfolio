@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors border-transparent bg-foreground text-background shadow;
+  }
+}
+
+:root {
+  --background: #1f1f1f;
+  --foreground: #ededed;
+}
+
+html[data-mode="light"] {
+  --background: #ededed;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+
+  * {
+    cursor: none;
+  }
+
+  .row-content {
+
+    h4 {
+      @apply text-xl mt-12 mb-4;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1rem;
+
+      @apply mb-4;
+
+      > li {
+        @apply mb-8;
+      }
+  
+      li {
+        &:not(:last-of-type) {
+          @apply mb-2;
+        }
+
+        > ul {
+          @apply mt-2;
+        }
+      }
+    }
+  }
+
+}
+
+@media (min-width: 320px) {
+  .alphie {
+    right: 0;
+    left: inherit;
+  }
+}
+
+@media (min-width: 420px) {
+  .alphie {
+    left: 0;
+  }
+}
+
+@media (min-width: 560px) {
+  .alphie {
+    right: 0;
+    left: inherit;
+  }
+}
+
+.animation-shine {
+  -webkit-mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #000 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  -webkit-mask-size: 200%;
+  animation: shine 8s infinite;
+}
+
+@-webkit-keyframes shine {
+  0% {
+    -webkit-mask-position: 150%;
+  }
+
+  20%,
+  100% {
+    -webkit-mask-position: -50%;
+  }
+}
