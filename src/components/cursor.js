@@ -24,12 +24,10 @@ export const cursorConfig = {
     ),
     onClickAnimation: { width: 48, height: 48, rotate: -45 },
   },
-  button: {
+  ".print": {
     variant: "hoverButton",
-    styles: {
-      scale: 1.3,
-      backgroundColor: "#f90",
-    },
+    styles: {},
+    content: "Télécharger PDF",
   },
 };
 
@@ -116,25 +114,48 @@ export default function Cursor() {
   );
 
   return (
-    <motion.div
-      className="hidden sm:block fixed top-0 left-0 pointer-events-none z-40 size-4 rounded-full border border-secondary dark:border-primary bg-primary dark:bg-secondary"
-      style={{
-        translateX: springX,
-        translateY: springY,
-      }}
-      variants={variants}
-      animate={isClicked && currentVariantConfig?.onClickAnimation ? currentVariantConfig.onClickAnimation : cursorVariant}
-      onAnimationComplete={() => setIsClicked(false)} // Reset click state after animation
-    >
-      {currentVariantConfig?.icon && (
-        <motion.span
-          initial={{ width: 0, height: 0 }}
-          animate={{ width: 24, height: 24 }}
-          className="block translate-x-1/2 translate-y-1/2 -left-1/2 -top-1/2 transition-all"
+    <>
+      <motion.div
+        className="cursor hidden sm:block fixed top-0 left-0 pointer-events-none z-40 size-4 rounded-full border border-secondary dark:border-primary bg-primary dark:bg-secondary"
+        style={{
+          translateX: springX,
+          translateY: springY,
+        }}
+        variants={variants}
+        animate={
+          isClicked && currentVariantConfig?.onClickAnimation
+            ? currentVariantConfig.onClickAnimation
+            : cursorVariant
+        }
+        onAnimationComplete={() => setIsClicked(false)} // Reset click state after animation
+      >
+        {currentVariantConfig?.icon && (
+          <motion.span
+            initial={{ width: 0, height: 0 }}
+            animate={{ width: 24, height: 24 }}
+            className="block translate-x-1/2 translate-y-1/2 -left-1/2 -top-1/2 transition-all"
+          >
+            {currentVariantConfig.icon}
+          </motion.span>
+        )}
+      </motion.div>
+      {currentVariantConfig?.content && (
+        <motion.div
+          initial={{
+            opacity: 0
+          }}
+          animate={{
+            opacity: 1
+          }}
+          className="fixed top-6 left-2 p-2 rounded-sm font-bold text-sm bg-gray-300 text-primary"
+          style={{
+            translateX: springX,
+            translateY: springY,
+          }}
         >
-          {currentVariantConfig.icon}
-        </motion.span>
+          {currentVariantConfig.content}
+        </motion.div>
       )}
-    </motion.div>
+    </>
   );
-};
+}

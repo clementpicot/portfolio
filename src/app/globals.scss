@@ -99,6 +99,11 @@ body {
 @media print {
   html {
     body.antialiased {
+
+      .cursor {
+        @apply hidden;
+      }
+
       @apply text-primary bg-white;
 
       header {

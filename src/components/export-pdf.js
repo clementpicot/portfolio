@@ -12,7 +12,7 @@ export default function ExportPDFButton() {
   return (
     <button
       onClick={handleDownloadPDF}
-      className="cursor-pointer bg-primary dark:bg-secondary text-secondary dark:text-primary flex justify-center items-center rounded-full size-8"
+      className="print bg-primary dark:bg-secondary text-secondary dark:text-primary flex justify-center items-center rounded-full size-8"
     >
       <ArrowDownTrayIcon width={20} />
     </button>

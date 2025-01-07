@@ -43,6 +43,7 @@ export default function RichTextRenderer({ richText }) {
                     duration: 0.1,
                   },
                 }}
+                exit={{maxWidth: 0}}
                 src={href}
                 alt="Alphie the Bernese Mountain Dog"
                 className="alphie absolute z-30 bottom-10 sm:left-1/2 sm:-translate-x-1/2"
