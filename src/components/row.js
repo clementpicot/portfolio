@@ -33,11 +33,11 @@ export default function Row({ delay, context, isOpened, onToggle, children }) {
         setIsTracking(false);
       }}
       onClick={onToggle}
-      className="py-8 border-b border-neutral-400 cursor-none"
+      className="row py-8 border-b border-neutral-400 cursor-none"
     >
       {isTracking && (
         <motion.div
-          className="dark:bg-slate-50 bg-foreground dark:bg-foreground fixed pointer-events-none rounded-full inset-0 -top-4 -left-4"
+          className="dark:bg-slate-50 bg-secondary dark:bg-secondary fixed pointer-events-none rounded-full inset-0 -top-4 -left-4"
           style={{
             translateX: springX,
             translateY: springY,

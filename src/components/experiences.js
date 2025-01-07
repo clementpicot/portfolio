@@ -12,7 +12,7 @@ export default function Experiences({ experiences, locale }) {
   const {openedIndex, toggle} = useToggle()
 
   return (
-    <section className="mt-24 relative z-10">
+    <section className="experiences mt-24 relative z-10">
       <h2 className="text-clamp w-full block uppercase font-funnel text-bold">
         {locale === 'fr' ? 'Expériences' : 'Experiences'}
       </h2>
@@ -30,7 +30,7 @@ export default function Experiences({ experiences, locale }) {
             onToggle={() => toggle(index)}
             key={index}
           >
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-10">
+            <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-10">
               <div className="sm:min-w-36 order-1">
                 <h3 className="text-xl">
                   {item.fields.link ? (
@@ -51,13 +51,14 @@ export default function Experiences({ experiences, locale }) {
                   {item.fields.date["fr"]}
                 </p>
               </div>
-              <div className="sm:max-w-[50%] order-3 sm:order-2">
+              <div className="row-introduction sm:max-w-[50%] order-3 sm:order-2">
                 {item.fields.introduction[locale]}
               </div>
               <div className="max-w-40 w-full sm:text-right order-2 sm:order-3">
                 <span className="badge">{item.fields.job[locale]}</span>
               </div>
             </div>
+            <div className="row-content row-content-print mt-8 hidden">{documentToReactComponents(item.fields.description[locale])}</div>
           </Row>
         );
       })}

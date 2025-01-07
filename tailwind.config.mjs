@@ -8,15 +8,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
       },
       fontFamily: {
-        funnel: "var(--font-funnel)"
+        funnel: "var(--font-funnel)",
       },
       fontSize: {
-        clamp: 'clamp(2rem, 10vw, 8.5rem)'
-      }
+        clamp: "clamp(2rem, 10vw, 8.5rem)",
+      },
     },
   },
   plugins: [],

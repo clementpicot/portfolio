@@ -10,7 +10,7 @@ export default function Projects({ projects, locale }) {
   const { openedIndex, toggle } = useToggle();
 
   return (
-    <section className="mt-24 relative z-10">
+    <section className="projects mt-24 relative z-10">
       <h2 className="text-clamp w-full block uppercase font-funnel text-bold">
         {locale === 'fr' ? 'Projets' : 'Projects'}
       </h2>
@@ -45,8 +45,9 @@ export default function Projects({ projects, locale }) {
                   </span>
                 ))}
               </div>
-              <p>{item.fields.introduction[locale]}</p>
+              <p className="row-introduction">{item.fields.introduction[locale]}</p>
             </div>
+            <div className="row-content row-content-print mt-8 hidden">{documentToReactComponents(item.fields.description[locale])}</div>
           </Row>
         );
       })}

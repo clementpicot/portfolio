@@ -20,7 +20,7 @@ export default function Cursor() {
 
   return (
     <div
-      className="pointer-events-none fixed z-30 inset-0 size-3 rounded-full dark:bg-white bg-foreground border border-gray-800"
+      className="pointer-events-none fixed z-30 inset-0 size-3 rounded-full dark:bg-white bg-secondary border border-gray-800"
       style={{
         translate: `${position.x}px ${position.y}px`,
       }}

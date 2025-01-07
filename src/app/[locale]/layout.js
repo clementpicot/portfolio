@@ -13,6 +13,7 @@ import CursorRadial from "@/components/cursor-radial";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { Geist, Geist_Mono, Funnel_Display } from "next/font/google";
 import { CursorProvider } from "@/providers/cursor-provider";
+import ExportPDFButton from "@/components/export-pdf";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,7 +54,7 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased text-primary dark:text-secondary bg-secondary dark:bg-primary`}
       >
         <ThemeProvider
           defaultTheme="dark"
@@ -63,9 +64,9 @@ export default async function RootLayout({ children, params }) {
           <CursorProvider>
             <div className="min-h-screen flex flex-col justify-between pt-8 p-8 font-[family-name:var(--font-geist-sans)]">
               <main className="max-w-[60rem] mx-auto w-full">
-                <div className="flex justify-between">
+                <header className="flex justify-between">
                   <div>
-                    <h1 className="w-full min-w-40 cursor-pointer dark:text-foreground">
+                    <h1 className="w-full min-w-40 cursor-pointer dark:text-secondary">
                       <span className="sr-only">
                         Clément Picot - Experienced Frontend Developer - ReactJS
                         NextJS
@@ -73,7 +74,10 @@ export default async function RootLayout({ children, params }) {
                       <span className="block group relative overflow-hidden">
                         <span className="inline-block transition-all duration-300 ease-in-out group-hover:-translate-y-full animation-shine">
                           Clément Picot
-                          <ArrowUpRightIcon width={10} className="inline ml-2" />
+                          <ArrowUpRightIcon
+                            width={10}
+                            className="inline ml-2"
+                          />
                         </span>
                         <span className="inline-block absolute top-0 left-0 transition-all duration-300 ease-in-out translate-y-full group-hover:-translate-y-0 text-gray-500 dark:text-white/50">
                           <a
@@ -90,8 +94,9 @@ export default async function RootLayout({ children, params }) {
                   <div className="flex justify-end gap-4">
                     <LocaleSwitcher locale={locale} />
                     <ThemeSwitcher />
+                    <ExportPDFButton />
                   </div>
-                </div>
+                </header>
                 <AnimatePresence initial={false} mode="wait">
                   {children}
                 </AnimatePresence>

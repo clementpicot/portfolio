@@ -10,23 +10,16 @@
 
 @layer components {
   .badge {
-    @apply inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors border-transparent bg-foreground text-background shadow;
+    @apply inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors border-transparent bg-primary dark:bg-secondary text-secondary dark:text-primary shadow;
   }
 }
 
 :root {
-  --background: #1f1f1f;
-  --foreground: #ededed;
-}
-
-html[data-mode="light"] {
-  --background: #ededed;
-  --foreground: #171717;
+  --primary: #1f1f1f;
+  --secondary: #ededed;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 
   * {
@@ -34,7 +27,6 @@ body {
   }
 
   .row-content {
-
     h4 {
       @apply text-xl mt-12 mb-4;
     }
@@ -48,7 +40,7 @@ body {
       > li {
         @apply mb-8;
       }
-  
+
       li {
         &:not(:last-of-type) {
           @apply mb-2;
@@ -60,7 +52,6 @@ body {
       }
     }
   }
-
 }
 
 @media (min-width: 320px) {
@@ -102,5 +93,69 @@ body {
   20%,
   100% {
     -webkit-mask-position: -50%;
+  }
+}
+
+@media print {
+  html {
+    body.antialiased {
+      @apply text-primary bg-white;
+
+      header {
+        @apply hidden;
+      }
+
+      h2 {
+        @apply text-3xl mb-8;
+      }
+
+      h3 {
+        @apply text-lg;
+      }
+
+      section {
+
+        page-break-after: always !important;
+        @apply mt-12 relative z-50;
+
+        &.experiences {
+          article > div {
+            @apply flex-col items-start gap-4;
+
+            .order-2 {
+              @apply absolute right-0 top-0 text-left translate-y-2;
+            }
+
+            .order-3 {
+              @apply max-w-full;
+            }
+          }
+        }
+
+        &.skills {
+          > div {
+            @apply block space-y-6;
+          }
+
+          .skill {
+            page-break-after: auto;
+          }
+        }
+
+        .row {
+          page-break-after: always;
+
+          @apply border-none py-0;
+        }
+
+        .row-introduction {
+          @apply hidden;
+        }
+
+        .row-content-print {
+          @apply block;
+        }
+      }
+    }
   }
 }
