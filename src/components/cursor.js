@@ -117,7 +117,7 @@ export default function Cursor() {
 
   return (
     <motion.div
-      className="custom-cursor fixed top-0 left-0 pointer-events-none z-40 size-4 rounded-full border border-secondary dark:border-primary bg-primary dark:bg-secondary"
+      className="hidden sm:block fixed top-0 left-0 pointer-events-none z-40 size-4 rounded-full border border-secondary dark:border-primary bg-primary dark:bg-secondary"
       style={{
         translateX: springX,
         translateY: springY,
