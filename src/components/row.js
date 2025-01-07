@@ -36,7 +36,7 @@ export default function Row({ delay, context, isOpened, onToggle, children }) {
       className="row py-8 border-b border-neutral-400 cursor-none"
     >
       {isTracking && (
-        <motion.div
+        <motion.span
           className="dark:bg-slate-50 bg-secondary dark:bg-secondary fixed pointer-events-none rounded-full inset-0 -top-4 -left-4"
           style={{
             translateX: springX,
@@ -73,7 +73,7 @@ export default function Row({ delay, context, isOpened, onToggle, children }) {
               } transition-all`}
             />
           </motion.div>
-        </motion.div>
+        </motion.span>
       )}
       {children}
 
