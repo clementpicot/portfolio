@@ -106,6 +106,7 @@ export default async function RootLayout({ children, params }) {
             <Cursor />
           </CursorProvider>
         </ThemeProvider>
+        <script defer data-domain="clmntpct.xyz" src="https://plausible.io/js/script.js"></script>
       </body>
     </html>
   );
