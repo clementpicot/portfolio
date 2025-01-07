@@ -14,7 +14,7 @@ import { Geist, Geist_Mono, Funnel_Display } from "next/font/google";
 import { CursorProvider } from "@/providers/cursor-provider";
 import ExportPDFButton from "@/components/export-pdf";
 import Cursor from "@/components/cursor";
-import PlausibleProvider from "@/providers/plausible-provider";
+import Plausible from "@/providers/plausible-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,7 +63,7 @@ export default async function RootLayout({ children, params }) {
           disableTransitionOnChange
         >
           <CursorProvider>
-            <PlausibleProvider>
+            <Plausible>
               <div className="min-h-screen flex flex-col justify-between pt-8 p-8 font-[family-name:var(--font-geist-sans)]">
                 <main className="max-w-[60rem] mx-auto w-full">
                   <header className="flex justify-between">
@@ -106,7 +106,7 @@ export default async function RootLayout({ children, params }) {
               </div>
               <CursorRadial />
               <Cursor />
-            </PlausibleProvider>
+            </Plausible>
           </CursorProvider>
         </ThemeProvider>
       </body>
