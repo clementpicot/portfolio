@@ -1,16 +1,11 @@
 "use client";
 
-import useTracking from "@/hooks/use-tracking";
 import { useCursor } from "@/providers/cursor-provider";
-import { ArrowDownRightIcon } from "@heroicons/react/24/outline";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
 export default function Row({ delay, context, isOpened, onToggle, children }) {
-  const { setIsTracking, isTracking, springX, springY } = useTracking({
-    stiffness: 200,
-    damping: 25,
-  });
+
   const { setIsCursorVisible } = useCursor();
 
   return (
@@ -26,55 +21,14 @@ export default function Row({ delay, context, isOpened, onToggle, children }) {
       }}
       onMouseEnter={() => {
         setIsCursorVisible(false);
-        setIsTracking(true);
       }}
       onMouseLeave={() => {
         setIsCursorVisible(true);
-        setIsTracking(false);
       }}
       onClick={onToggle}
-      className="row py-8 border-b border-neutral-400 cursor-none"
+      className="row relative z-40 py-8 border-b border-neutral-400 cursor-none pointer-events-auto [&>*]:pointer-events-auto"
     >
-      {isTracking && (
-        <motion.span
-          className="dark:bg-slate-50 bg-secondary dark:bg-secondary fixed pointer-events-none rounded-full inset-0 -top-4 -left-4"
-          style={{
-            translateX: springX,
-            translateY: springY,
-          }}
-          initial={{
-            width: 12,
-            height: 12,
-          }}
-          animate={{
-            width: 48,
-            height: 48,
-            transition: {
-              type: "spring",
-              stiffness: 300,
-              damping: 10,
-            },
-          }}
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{
-              width: 24,
-              transition: {
-                type: "spring",
-                stiffness: 300,
-                damping: 10,
-              },
-            }}
-          >
-            <ArrowDownRightIcon
-              className={`-top-1/2 translate-y-1/2 -left-1/2 translate-x-1/2 text-slate-50 dark:text-black w-full ${
-                isOpened && "-rotate-90"
-              } transition-all`}
-            />
-          </motion.div>
-        </motion.span>
-      )}
+
       {children}
 
       <AnimatePresence>

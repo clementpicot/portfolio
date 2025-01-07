@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export default function RichTextRenderer({ richText }) {
@@ -37,9 +37,12 @@ export default function RichTextRenderer({ richText }) {
             {activeLink === href && (
               <motion.img
                 initial={{ maxWidth: 0 }}
-                animate={{ maxWidth: "18rem", transition: {
-                  duration: .1
-                } }}
+                animate={{
+                  maxWidth: "18rem",
+                  transition: {
+                    duration: 0.1,
+                  },
+                }}
                 src={href}
                 alt="Alphie the Bernese Mountain Dog"
                 className="alphie absolute z-30 bottom-10 sm:left-1/2 sm:-translate-x-1/2"

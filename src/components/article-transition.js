@@ -1,21 +1,24 @@
 "use client";
 import React from "react";
-import { AnimatePresence, color, motion } from "framer-motion";
+import { AnimatePresence, color, motion } from "motion/react";
 
 function ArticleTransition({ children, delay, className, ...delegated }) {
-
   return (
     <motion.article
       initial={{ opacity: 0.5, y: 10 }}
-      animate={{ opacity: 1, y: 0, transition: {
-        duration: 1,
-        staggerChildren: .5
-      } }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 1,
+          staggerChildren: 0.5,
+        },
+      }}
       transition={{
         type: "spring",
         bounce: 0,
         duration: 1,
-        staggerChildren: .5,
+        staggerChildren: 0.5,
       }}
       className={`mt-6 ${className}`}
       {...delegated}

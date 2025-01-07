@@ -30,25 +30,25 @@ body {
     h4 {
       @apply text-xl mt-12 mb-4;
     }
+  }
 
-    ul {
-      list-style-type: disc;
-      padding-left: 1rem;
+  ul {
+    list-style-type: disc;
+    padding-left: 1rem;
 
-      @apply mb-4;
+    @apply mb-4;
 
-      > li {
-        @apply mb-8;
+    > li {
+      @apply mb-8;
+    }
+
+    li {
+      &:not(:last-of-type) {
+        @apply mb-2;
       }
 
-      li {
-        &:not(:last-of-type) {
-          @apply mb-2;
-        }
-
-        > ul {
-          @apply mt-2;
-        }
+      > ul {
+        @apply mt-2;
       }
     }
   }
@@ -114,7 +114,6 @@ body {
       }
 
       section {
-
         page-break-after: always !important;
         @apply mt-12 relative z-50;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 function HeadingTransition({ title, ...delegated }) {
@@ -31,7 +31,7 @@ function HeadingTransition({ title, ...delegated }) {
           type: "spring",
           bounce: 0,
           ease: "easeInOut",
-          duration: 0.8
+          duration: 0.8,
         }}
         className="inline-block animation-shine mt-0"
       >

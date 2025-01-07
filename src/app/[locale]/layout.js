@@ -1,19 +1,19 @@
 import "@/app/globals.scss";
 
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { routing } from "@/i18n/routing";
 import { redirect } from "next/navigation";
 
 import ThemeProvider from "@/providers/theme-provider";
 import LocaleSwitcher from "@/components/locale-switcher";
 import ThemeSwitcher from "@/components/theme-switcher";
-import Cursor from "@/components/cursor";
 import CursorRadial from "@/components/cursor-radial";
 
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { Geist, Geist_Mono, Funnel_Display } from "next/font/google";
 import { CursorProvider } from "@/providers/cursor-provider";
 import ExportPDFButton from "@/components/export-pdf";
+import Cursor from "@/components/cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -102,8 +102,8 @@ export default async function RootLayout({ children, params }) {
                 </AnimatePresence>
               </main>
             </div>
-            <Cursor />
             <CursorRadial />
+            <Cursor />
           </CursorProvider>
         </ThemeProvider>
       </body>
