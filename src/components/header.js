@@ -33,7 +33,7 @@ export default function Header({ locale }) {
       <div className="flex justify-end gap-4">
         <LocaleSwitcher locale={locale} />
         <ThemeSwitcher />
-        <ExportPDFButton />
+        <ExportPDFButton locale={locale} />
       </div>
     </header>
   );

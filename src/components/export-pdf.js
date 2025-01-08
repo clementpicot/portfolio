@@ -2,11 +2,29 @@
 
 import React from "react";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import useScreenWidth from "@/hooks/use-screen-width";
 
-export default function ExportPDFButton() {
+export default function ExportPDFButton({locale}) {
+
+  const isMobile = useScreenWidth();
+
+  function downloadFile(url, filename) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+  }
 
   const handleDownloadPDF = async () => {
+    if (isMobile) {
+
+      downloadFile(`/pdf/portfolio-clement-picot-${locale}.pdf`, 'Portfolio Clément Picot')
+
+      return;
+    }
+
     window.print();
+
   };
 
   return (
