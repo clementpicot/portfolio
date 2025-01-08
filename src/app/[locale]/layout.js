@@ -63,7 +63,7 @@ export default async function RootLayout({ children, params }) {
           onError={(err) => {
             console.error('Script failed to load', err)
           }}
-        ></Script>
+        />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased text-primary dark:text-secondary bg-secondary dark:bg-primary`}
