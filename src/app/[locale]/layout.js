@@ -15,6 +15,8 @@ import { CursorProvider } from "@/providers/cursor-provider";
 import ExportPDFButton from "@/components/export-pdf";
 import Cursor from "@/components/cursor";
 import PlausibleProvider from "next-plausible";
+import Script from "next/script";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,9 +56,14 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
+      <Head>
+        <Script
+          async
+          src="https://cloud.umami.is/script.js"
+          data-website-id="c2060ac5-e423-44f5-8446-738c713d7a2f"
+        />
         <PlausibleProvider domain="clmntpct.xyz" />
-      </head>
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased text-primary dark:text-secondary bg-secondary dark:bg-primary`}
       >
@@ -68,7 +75,7 @@ export default async function RootLayout({ children, params }) {
           <CursorProvider>
             <div className="min-h-screen flex flex-col justify-between pt-8 p-8 font-[family-name:var(--font-geist-sans)]">
               <main className="max-w-[60rem] mx-auto w-full">
-                <header className="flex justify-between">
+                <header className="flex items-center justify-between">
                   <div>
                     <h1 className="w-full min-w-40 cursor-pointer dark:text-secondary">
                       <span className="sr-only">
