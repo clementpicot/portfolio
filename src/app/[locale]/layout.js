@@ -57,12 +57,12 @@ export default async function RootLayout({ children, params }) {
     <html lang={locale} suppressHydrationWarning>
       <Head>
         <Script
-          defer
-          src="https://umami.clmntpct.xyz/script.js"
-          data-website-id="6dbb9d8b-7f6f-4760-83c1-f6f921a5582e"
+          src={process.env.NEXT_PUBLIC_UMAMI_URL}
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
           onError={(err) => {
-            console.error('Script failed to load', err)
+            console.error('Head Script failed to load', err)
           }}
+          strategy="lazyOnload"
         />
       </Head>
       <body
@@ -118,6 +118,14 @@ export default async function RootLayout({ children, params }) {
             <Cursor />
           </CursorProvider>
         </ThemeProvider>
+        <Script
+          src={process.env.NEXT_PUBLIC_UMAMI_URL}
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
+          onError={(err) => {
+            console.error('Body Script failed to load', err)
+          }}
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
