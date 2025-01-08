@@ -1,12 +1,24 @@
 "use client";
 
 import { useCursor } from "@/providers/cursor-provider";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
 export default function Row({ delay, context, isOpened, onToggle, children }) {
-
   const { setIsCursorVisible } = useCursor();
+
+  const renderOptions = {
+    renderNode: {
+      hyperlink: (node, children) => {
+        const href = node.data.uri;
+        return (
+          <a href={href} className="dark:text-blue-400 dark:hover:text-blue-600 text-orange-500 hover:text-orange-700 transition-all pointer-events-auto" target="_blank" rel="noopener noreferrer">{children}</a>
+        );
+      },
+    },
+  };
 
   return (
     <motion.article
@@ -28,8 +40,12 @@ export default function Row({ delay, context, isOpened, onToggle, children }) {
       onClick={onToggle}
       className="row relative z-40 py-8 border-b border-neutral-400 cursor-none pointer-events-auto [&>*]:pointer-events-auto"
     >
-
       {children}
+
+      <p className={`mt-4 flex sm:hidden items-center gap-1.5 transition-all ease-in-out animation-shine ${isOpened && 'restart'}`}>
+        <InformationCircleIcon width={16} />
+        En savoir plus
+      </p>
 
       <AnimatePresence>
         {isOpened && (
@@ -43,7 +59,7 @@ export default function Row({ delay, context, isOpened, onToggle, children }) {
             }}
             className="row-content overflow-hidden"
           >
-            {context}
+            {documentToReactComponents(context, renderOptions)}
           </motion.div>
         )}
       </AnimatePresence>

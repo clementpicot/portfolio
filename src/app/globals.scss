@@ -82,19 +82,24 @@ body {
     rgba(0, 0, 0, 0.6) 70%
   );
   -webkit-mask-size: 200%;
-  animation: shine 8s infinite;
+  animation: shine 4s infinite;
 }
 
 @-webkit-keyframes shine {
-  0% {
+  0%, 20% {
     -webkit-mask-position: 150%;
   }
-
-  20%,
-  100% {
+  
+  50% {
+    -webkit-mask-position: 50%;
+  }
+  
+  80%, 100% {
     -webkit-mask-position: -50%;
   }
 }
+
+
 
 @media print {
   html {

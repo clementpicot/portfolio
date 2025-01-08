@@ -147,7 +147,7 @@ export default function Cursor() {
           animate={{
             opacity: 1
           }}
-          className="fixed top-6 left-2 p-2 rounded-sm font-bold text-sm bg-primary dark:bg-secondary text-secondary dark:text-primary"
+          className="hidden sm:block fixed top-6 left-2 p-2 rounded-sm font-bold text-sm bg-primary dark:bg-secondary text-secondary dark:text-primary"
           style={{
             translateX: springX,
             translateY: springY,

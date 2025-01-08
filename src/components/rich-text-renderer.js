@@ -14,9 +14,6 @@ export default function RichTextRenderer({ richText }) {
 
   const renderOptions = {
     renderNode: {
-      "embedded-asset-block": (node) => {
-        // Render other blocks if needed
-      },
       hyperlink: (node, children) => {
         const href = node.data.uri;
         return (

@@ -23,11 +23,17 @@ export default function Experiences({ experiences, locale }) {
             delay={index / 8 + 0.5}
             context={
               openedIndex === index
-                ? documentToReactComponents(item.fields.description[locale])
+                ? item.fields.description[locale]
                 : null
             }
             isOpened={openedIndex === index}
-            onToggle={() => toggle(index)}
+            onToggle={() => {
+              toggle(index)
+
+              if(!window.umami) return;
+
+              window.umami.track(`Expérience - ${item.fields.company["fr"]}`)
+            }}
             key={index}
           >
             <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-10">
@@ -58,6 +64,8 @@ export default function Experiences({ experiences, locale }) {
                 <span className="badge">{item.fields.job[locale]}</span>
               </div>
             </div>
+
+            {/* Print Only */}
             <div className="row-content row-content-print mt-8 hidden">{documentToReactComponents(item.fields.description[locale])}</div>
           </Row>
         );
