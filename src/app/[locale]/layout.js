@@ -60,6 +60,9 @@ export default async function RootLayout({ children, params }) {
           defer
           src="https://umami.clmntpct.xyz/script.js"
           data-website-id="6dbb9d8b-7f6f-4760-83c1-f6f921a5582e"
+          onError={(err) => {
+            console.error('Script failed to load', err)
+          }}
         ></Script>
       </Head>
       <body
