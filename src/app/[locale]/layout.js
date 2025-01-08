@@ -15,6 +15,7 @@ import { CursorProvider } from "@/providers/cursor-provider";
 import ExportPDFButton from "@/components/export-pdf";
 import Cursor from "@/components/cursor";
 import Head from "next/head";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,11 +56,11 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <Head>
-        <script
+        <Script
           defer
           src="https://umami.clmntpct.xyz/script.js"
           data-website-id="6dbb9d8b-7f6f-4760-83c1-f6f921a5582e"
-        ></script>
+        ></Script>
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased text-primary dark:text-secondary bg-secondary dark:bg-primary`}
