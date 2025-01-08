@@ -58,8 +58,8 @@ export default async function RootLayout({ children, params }) {
         <script
           defer
           src="https://umami.clmntpct.xyz/script.js"
-          data-website-id="c2060ac5-e423-44f5-8446-738c713d7a2f"
-        />
+          data-website-id="6dbb9d8b-7f6f-4760-83c1-f6f921a5582e"
+        ></script>
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased text-primary dark:text-secondary bg-secondary dark:bg-primary`}
