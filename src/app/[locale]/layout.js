@@ -56,16 +56,6 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <Head>
-        <Script
-          src={process.env.NEXT_PUBLIC_UMAMI_URL}
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
-          onError={(err) => {
-            console.error('Head Script failed to load', err)
-          }}
-          strategy="lazyOnload"
-        />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased text-primary dark:text-secondary bg-secondary dark:bg-primary`}
       >
