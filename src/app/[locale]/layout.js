@@ -56,8 +56,8 @@ export default async function RootLayout({ children, params }) {
     <html lang={locale} suppressHydrationWarning>
       <Head>
         <script
-          async
-          src="https://cloud.umami.is/script.js"
+          defer
+          src="https://umami.clmntpct.xyz/script.js"
           data-website-id="c2060ac5-e423-44f5-8446-738c713d7a2f"
         />
       </Head>
