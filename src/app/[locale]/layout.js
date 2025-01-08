@@ -14,8 +14,6 @@ import { Geist, Geist_Mono, Funnel_Display } from "next/font/google";
 import { CursorProvider } from "@/providers/cursor-provider";
 import ExportPDFButton from "@/components/export-pdf";
 import Cursor from "@/components/cursor";
-import PlausibleProvider from "next-plausible";
-import Script from "next/script";
 import Head from "next/head";
 
 const geistSans = Geist({
@@ -57,12 +55,11 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <Head>
-        <Script
+        <script
           async
           src="https://cloud.umami.is/script.js"
           data-website-id="c2060ac5-e423-44f5-8446-738c713d7a2f"
         />
-        <PlausibleProvider domain="clmntpct.xyz" />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${funnel.variable} antialiased text-primary dark:text-secondary bg-secondary dark:bg-primary`}
