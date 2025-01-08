@@ -13,6 +13,7 @@ export default function ExportPDFButton() {
     <button
       onClick={handleDownloadPDF}
       className="print bg-primary dark:bg-secondary text-secondary dark:text-primary flex justify-center items-center rounded-full size-8"
+      data-umami-event="Download PDF"
     >
       <ArrowDownTrayIcon width={20} />
     </button>
