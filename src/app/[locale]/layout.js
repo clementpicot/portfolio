@@ -16,6 +16,7 @@ import ExportPDFButton from "@/components/export-pdf";
 import Cursor from "@/components/cursor";
 import Head from "next/head";
 import Script from "next/script";
+import UmamiScript from "@/components/umami-script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,14 +119,7 @@ export default async function RootLayout({ children, params }) {
             <Cursor />
           </CursorProvider>
         </ThemeProvider>
-        <Script
-          src={process.env.NEXT_PUBLIC_UMAMI_URL}
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
-          onError={(err) => {
-            console.error('Body Script failed to load', err)
-          }}
-          strategy="lazyOnload"
-        />
+        <UmamiScript />
       </body>
     </html>
   );

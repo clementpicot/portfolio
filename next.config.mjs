@@ -3,8 +3,8 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const cspHeader = `
-    default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    default-src 'self' https://umami.clmntpct.xyz;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://umami.clmntpct.xyz;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
