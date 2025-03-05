@@ -118,8 +118,10 @@ export default function Cursor() {
       <motion.div
         className="cursor hidden sm:block fixed top-0 left-0 pointer-events-none z-40 size-4 rounded-full border border-secondary dark:border-primary bg-primary dark:bg-secondary"
         style={{
-          translateX: springX,
-          translateY: springY,
+          x: springX,
+          y: springY,
+          translateX: currentVariantConfig?.icon ? -24 : -8,
+          translateY: currentVariantConfig?.icon ? -24 : -8,
         }}
         variants={variants}
         animate={
@@ -149,8 +151,8 @@ export default function Cursor() {
           }}
           className="hidden sm:block fixed top-6 left-2 p-2 rounded-sm font-bold text-sm bg-primary dark:bg-secondary text-secondary dark:text-primary"
           style={{
-            translateX: springX,
-            translateY: springY,
+            x: springX,
+            y: springY,
           }}
         >
           {currentVariantConfig.content}
